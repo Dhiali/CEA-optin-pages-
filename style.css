@@ -1,0 +1,544 @@
+/* =========================================================
+   CAREER EXCEL ACADEMY - LANDING PAGE STYLES (WPForms ID: 18680)
+   ========================================================= */
+
+/* GLOBAL & TYPOGRAPHY SETTINGS */
+.cea-landing-container {
+    font-family: 'Inter', sans-serif; /* Fallback for the design's sans-serif font */
+    color: #000000;
+    line-height: 1.5;
+    max-width: 1600px; /* Optional: prevents page stretching on huge monitors */
+    margin: 0 auto;
+}
+
+/* Define Global Colors based on design */
+:root {
+    --cea-blue: #0C28B0;   /* Main branding blue */
+    --cea-orange: #CE8946; /* CTA and banner color */
+    --cea-gray-bg: #F2F2F2; /* Light background for Career section */
+}
+
+.cea-landing-container h1, 
+.cea-landing-container h2 {
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.cea-landing-container p {
+    font-weight: 400;
+    font-size: 16px;
+    margin-bottom: 30px;
+}
+
+/* BUTTON STYLES */
+.cea-btn-filled {
+    display: inline-block;
+    background-color: var(--cea-blue);
+    color: white;
+    padding: 15px 30px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s;
+}
+
+.cea-btn-filled:hover {
+    background-color: #002c80; /* Lighter shade of blue on hover */
+}
+
+.cea-btn-outline {
+    display: inline-block;
+    border: 2px solid white;
+    background-color: transparent;
+    color: white;
+    padding: 10px 25px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.cea-btn-outline:hover {
+    background-color: white;
+    color: var(--cea-orange); /* Text color changes to banner background on hover */
+}
+
+/* =============================================
+   SECTION 1: HERO 
+   ============================================= */
+/* =============================================
+   SECTION 1: HERO (PRECISION ALIGNMENT)
+   ============================================= */
+.cea-hero {
+    background-color: white;
+    /* Margin logic: 100px padding handles global margin */
+    padding: 60px 100px; 
+}
+
+.cea-hero-content {
+    display: grid;
+    /* Overall 12 column grid */
+    grid-template-columns: 7fr 5fr; 
+    gap: 40px; 
+    align-items: stretch;
+}
+
+/* The Grey Block (7 Columns) */
+.cea-hero-left {
+   background-color: #ffffff; /* Change from grey to white */
+    border-radius: 105px;
+    padding: 80px; 
+    /* Add a subtle shadow to give it "lift" */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+    border: 1px solid #f0f0f0; /* Very light edge definition */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+/* --- PRECISION LOGO ALIGNMENT LOGIC --- */
+.cea-hero-header {
+    display: flex;
+    /* Forces the left group to far-left of Col 2 space, right group to far-right of Col 6 space */
+    justify-content: space-between;
+    align-items: center;
+    width: 100%; /* Must fill the inner content area of the grey block */
+    margin-bottom: 40px;
+}
+
+.cea-logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.cea-main-logo {
+    height: 100px; /* *** INCREASED: From 40px to 55px *** */
+    width: auto;
+}
+
+.cea-validation-container {
+    display: flex;
+    align-items: center;
+    gap: 12px; /* Small space between "validated by" text and logo */
+}
+
+/* Styling for the new text */
+.cea-validated-text {
+    font-size: 14px;
+    font-weight: 600;
+    color: #666; /* Gray color to make it secondary text */
+}
+
+.cea-sacpmp-logo {
+    height: 30px; /* *** DECREASED: From 30px to 22px *** */
+    width: auto;
+}
+/* --- END PRECISION LOGO ALIGNMENT LOGIC --- */
+
+
+.cea-hero-left h1 {
+    font-size: 50px;
+    line-height: 1.2;
+    color: var(--cea-blue);
+    margin-bottom: 20px;
+}
+
+.cea-hero-left p {
+    font-weight: 700;
+    max-width: 90%;
+}
+
+.cea-btn-outline-blue {
+    display: inline-block;
+    border: 2px solid var(--cea-blue);
+    background-color: transparent;
+    color: var(--cea-blue);
+    padding: 12px 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: 0.3s;
+    margin-top: 10px;
+}
+
+.cea-btn-outline-blue:hover {
+    background-color: var(--cea-blue);
+    color: white;
+}
+
+/* The Gold Block (5 Columns) */
+.cea-hero-right {
+    background-color: var(--cea-orange);
+    border-radius:105px 105px 105px 105px;
+    position: relative; /* Acts as the "anchor" for the button and image */
+   overflow: visible; /* CRUCIAL: Allow the crop frame to stick out to the left */
+   min-height: 550px;
+   display: flex;
+    align-items: flex-end; 
+    /* Keeps buildings on the ground */
+}
+
+/* 1. THE CROP FRAME (The "Window") */
+.cea-hero-img-crop-container {
+    position: absolute;
+    top: 0;
+    bottom: 1px;
+    right: 0;
+    left: -85px; /* This is how much the building overlaps the grey block */
+    
+    overflow: hidden; /* This acts as the scissors to cut the image */
+   border-radius: 105px 105px 105px 210px; /* Keeps the rounded shape of the building block */
+    z-index: 1;
+}
+
+.cea-hero-img {
+    position: absolute;
+    height: 110%; /* Keeps it top-to-bottom */
+    width: auto;   /* Lets the width be natural so it doesn't stretch */
+    
+    /* POSITIONING THE VIEW:
+       Adjust the 'left' to slide the building complex left or right 
+       until only the first two houses are in the 'window'. */
+    left: 55px; 
+    
+    bottom: 0;
+    object-fit: cover;
+    max-width: none;
+}
+
+
+.cea-btn-white-pill {
+    position: absolute;
+  /* Nudge this horizontally and vertically to sit between the roofs */
+    /* ADJUST THESE starting points while looking at Live Server */
+    top: 8%;
+    left: 40%;
+    transform: translateX(-50%); /* Keeps it perfectly centered */
+    background-color: white;
+    color: var(--cea-blue);
+    padding: 10px 28px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 700;
+    z-index: 10; /* Keeps it on top of the image */
+    box-shadow: 0px 10px 20px rgba(0,0,0,0.1); /* Adds depth */
+    white-space: nowrap;
+    transition: 0.3s;
+}
+
+.cea-btn-white-pill:hover {
+    background-color: var(--cea-blue);
+    color: white;
+}
+
+
+/* =============================================
+   SECTION 2: DISCOUNT BANNER
+   ============================================= */
+.cea-banner-section {
+    padding: 40px 100px; /* Matches your site's side margins */
+    background-color: white;
+}
+
+.cea-banner-container {
+    position: relative;
+    width: 100%;
+    /* Update path to 'Banner 2 5%.png' as needed */
+    background-image: url('./assets/Banner.png'); 
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 20px; /* Optional: rounds the banner edges */
+    height: 140px; /* Adjust height to match the image aspect ratio */
+    display: flex;
+    align-items: center;
+}
+
+.cea-claim-btn {
+    position: absolute;
+    right: 11%; /* Positions it in the empty blue space on the right */
+    background-color: #FFFFFF; /* White background */
+    color: #D18D47; /* Matches the orange/gold text color from your banner */
+    padding: 12px 35px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 18px;
+    text-transform: none;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.cea-claim-btn:hover {
+    transform: scale(1.05);
+    background-color: var(--cea-orange);
+     color:  var(--cea-blue);
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive adjustment for smaller screens */
+@media (max-width: 992px) {
+    .cea-banner-section {
+        padding: 20px 40px;
+    }
+    .cea-claim-btn {
+        padding: 8px 20px;
+        font-size: 14px;
+        right: 3%;
+    }
+}
+
+/* =============================================
+   SECTION 3: FEATURES & TIMBER FRAME
+   ============================================= */
+
+   .cea-features-section {
+    background-color: rgb(255, 255, 255);
+    padding: 80px 10%;
+}
+
+.cea-features-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+}
+
+.cea-features-text-area {
+    display: flex;
+    flex-direction: column;
+}
+
+.cea-features-text-area h1 {
+    font-size: 50px;
+    color: black;
+}
+
+.cea-features-text-area p {
+    font-size: 20px;
+    color: black;
+    font-weight: 500;
+    margin-right:170px;
+}
+
+.cea-timber-img {
+    width: 100%;
+    border-radius: 0px;
+    object-fit: cover;
+    margin-top: auto; /* Push to bottom of text area to match design */
+}
+
+.cea-features-cards-area {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.cea-feature-card {
+    background-color: #051046;
+    padding: 20px; /* Reduced slightly to fit image better */
+    border-radius: 33px;
+    /* THE MAGIC: Aligns image and text side-by-side */
+    display: flex;
+    align-items: center; 
+    gap: 20px;
+}
+
+.cea-feature-img {
+    /* Precise square dimensions to match Figma */
+    width: 146px;
+    height: 158px;
+    border-radius: 31px;
+    object-fit: cover; /* Prevents stretching */
+    flex-shrink: 0; /* Prevents the image from getting squashed */
+}
+
+.cea-feature-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.cea-feature-card h4 {
+    color: white;
+     font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.cea-feature-card p {
+    margin: 0;
+    color: white;
+     font-size: 18px;
+    font-weight: 400;
+    margin-bottom: 10px;
+    padding-right:60px;
+}
+
+/* .cea-feature-card h4 {
+    color: var(--cea-blue);
+    font-size: 24px; /* Adjusted for better card fit
+font-weight: 700;
+    margin: 0 0 5px 0;
+}
+.cea-feature-card p {
+    margin: 0;
+    font-size: 20px;
+    color: #555;
+} */
+
+
+/* =============================================
+   SECTION 4: CAREERS GRID
+   ============================================= */
+.cea-careers-section {
+    background-color: #051046;
+    padding: 80px 10%;
+    border-radius: 33px;
+    color: white; /* Make headings white */
+}
+
+.cea-careers-intro {
+    display: flex;
+    gap: 100px;
+    margin-bottom: 60px;
+    align-items: flex-start;
+   
+}
+
+.cea-careers-intro h2 {
+    font-size: 36px;
+    color:white;
+    flex: 1;
+}
+
+.cea-careers-intro p {
+    flex: 1.5;
+    font-size: 16px;
+    font-weight: 500;
+    font-size: 18px;
+  
+}
+
+.cea-careers-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+.cea-career-card {
+  position: relative; /* Required to pin text inside */
+    width: 100%;
+    height: 350px; /* Adjust height to match Figma cards */
+    border-radius: 20px;
+    overflow: hidden; /* Clips the image to the border radius */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.cea-career-card img {
+   width: 100%;
+    height: 100%;
+    object-fit: cover; /* Makes image fill the whole card */
+    display: block;
+}
+
+.cea-career-card h4 {
+   position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0;
+    line-height: 1.2;
+    /* Gradient makes text readable regardless of image brightness */
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+}
+
+.cea-career-cta {
+    text-align: center;
+}
+
+/* Special button style for this section (outlined, blue text) */
+.cea-career-cta .cea-btn-outline-white {
+    display: inline-block;
+    border: 2px solid white;
+    background-color: transparent;
+    color: white;
+    padding: 10px 25px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.cea-career-cta .cea-btn-outline-white:hover {
+    background-color: white;
+    color: #051046;
+}
+
+/* =============================================
+   SECTION 5: APPLICATION FORM & FINAL CTA
+   ============================================= */
+.cea-form-section {
+    background-color: white;
+    padding: 80px 10%;
+}
+
+.cea-form-container {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.cea-form-text h2 {
+    font-size: 36px;
+    color: var(--cea-blue);
+    margin: 0;
+}
+
+/* Minimal styling for the form itself so it stays integrated */
+.cea-wpforms-wrapper {
+    background-color: white;
+    padding: 30px;
+    border-radius: 15px;
+}
+
+
+/* =========================================================
+   RESPONSIVE SETTINGS (Keep the design looking good on tablets and phones)
+   ========================================================= */
+
+/* Medium Devices (Tablets, up to 1024px) */
+@media (max-width: 1024px) {
+    .cea-landing-container h1 { font-size: 36px; }
+    .cea-landing-container h2 { font-size: 28px; }
+    
+    .cea-features-row { grid-template-columns: 1fr; }
+    .cea-careers-intro { flex-direction: column; gap: 20px; }
+    .cea-careers-grid { grid-template-columns: 1fr 1fr; }
+    .cea-form-container { grid-template-columns: 1fr; gap: 30px;}
+    
+    /* Make banner stack */
+    .cea-banner-content { grid-template-columns: 1fr; text-align: center; }
+    .cea-discount-percentage { width: auto; margin: 0 auto; display: inline-block;}
+}
+
+/* Small Devices (Phones, up to 600px) */
+@media (max-width: 600px) {
+    .cea-hero { padding: 40px 5%; }
+    .cea-hero-content { grid-template-columns: 1fr; }
+    .cea-landing-container h1 { font-size: 28px; }
+    .cea-sacpmp-validate { margin-bottom: 20px;}
+    
+    .cea-careers-grid { grid-template-columns: 1fr; }
+    .cea-discount-banner { padding: 20px 5%; }
+    .cea-features-section { padding: 40px 5%; }
+    .cea-careers-section { padding: 40px 5%; }
+    .cea-form-section { padding: 40px 5%; }
+    
+    .cea-discount-amount { font-size: 28px; }
+}
