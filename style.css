@@ -183,7 +183,7 @@
 .cea-hero-img-crop-container {
     position: absolute;
     top: 0;
-    bottom: 1px;
+    bottom: 0.5px;
     right: 0;
     left: -85px; /* This is how much the building overlaps the grey block */
     
@@ -458,7 +458,10 @@ font-weight: 700;
 }
 
 .cea-career-cta {
-    text-align: center;
+   display: flex;            /* Use flex to control horizontal alignment */
+    justify-content: flex-start; /* Aligns the button to the left */
+    text-align: left;         /* Fallback alignment */
+    margin-top: 20px;
 }
 
 /* Special button style for this section (outlined, blue text) */
@@ -477,36 +480,241 @@ font-weight: 700;
 .cea-career-cta .cea-btn-outline-white:hover {
     background-color: white;
     color: #051046;
+    transform: translateY(-3px);
 }
 
 /* =============================================
    SECTION 5: APPLICATION FORM & FINAL CTA
    ============================================= */
-.cea-form-section {
-    background-color: white;
-    padding: 80px 10%;
-}
-
-.cea-form-container {
-    display: grid;
-    grid-template-columns: 1fr 1.5fr;
-    gap: 60px;
-    align-items: center;
-}
-
-.cea-form-text h2 {
-    font-size: 36px;
+.cea-cta-split-section {
+    padding: 100px 100px;
     color: var(--cea-blue);
-    margin: 0;
 }
 
-/* Minimal styling for the form itself so it stays integrated */
-.cea-wpforms-wrapper {
-    background-color: white;
-    padding: 30px;
-    border-radius: 15px;
+.cea-cta-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Split exactly in half */
+    align-items: center;
+    gap: 40px;
 }
 
+.cea-cta-left h2 {
+    font-size: 50px;
+    color: var(--cea-blue);
+    margin-bottom: 15px;
+    margin-right: 50px;
+}
+
+.cea-cta-left p {
+    font-size: 18px;
+    color: #cbd5e0; /* Soft grey-blue for readability */
+}
+
+/* RIGHT SIDE STYLING */
+.cea-cta-right {
+    display: flex;
+    justify-content: flex-end; /* Pushes button to the far right */
+}
+
+.dual-btn {
+    display: flex;
+    align-items: center;
+    position: relative;
+    border-radius: 50px;
+    overflow: hidden;
+    width: 480px; /* Sized for the two buttons */
+    height: 62px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.btn {
+    flex: 1;
+    height: 100%;
+    border: none;
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.left-btn { background: #c9873d; } /* Brand Gold */
+.right-btn { background: #1a2a6c; } /* Brighter Blue for contrast */
+
+.or-circle {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 50px;
+    height: 50px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    color: #14145b;
+    font-weight: 900;
+    box-shadow: 0 0 0 6px #0A173F; /* Matches background to create gap */
+    z-index: 10;
+}
+
+/* Mobile: Stack them when space is tight */
+@media (max-width: 992px) {
+    .cea-cta-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    .cea-cta-right {
+        justify-content: center;
+    }
+}
+
+/* =============================================
+   SECTION 6: FOOTER
+   ============================================= */
+.cea-site-footer {
+  background: #0A173F; 
+  color: #fff;
+  font-family: Arial, sans-serif;
+}
+
+
+/* MAIN FOOTER */
+.footer-main {
+  padding: 60px 8% 40px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns:2fr 1fr 1fr 1fr;
+  gap: 50px;
+}
+
+.footer-logo-text {
+  font-size: 42px;
+  font-weight: bold;
+  line-height: 1;
+  margin-bottom: 20px;
+}
+
+.footer-logo-text span {
+  display: block;
+  font-size: 18px;
+  font-weight: 400;
+  margin-top: 10px;
+}
+
+.footer-about p {
+  line-height: 1.8;
+  margin-bottom: 30px;
+  color: #e5e5e5;
+}
+
+.footer-column h3 {
+  margin-bottom: 25px;
+  font-size: 30px;
+}
+
+.footer-column ul {
+  list-style: none;
+}
+
+.footer-column ul li {
+  margin-bottom: 18px;
+}
+
+.footer-column ul li a {
+  color: #cbd5e0;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.footer-column ul li a:hover {
+  color: #c9873d;
+}
+
+/* SOCIAL */
+.social-icons {
+  display: flex;
+  gap: 18px;
+  margin-bottom:30px;
+}
+
+.social-icons a {
+  width: 42px;
+  height: 42px;
+  background:#fff;
+  color:#020c5a;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.social-icons a:hover {
+  background: #c9873d;
+  transform: rotate(360deg);
+  color: #fff;
+}
+
+/* CONTACT */
+    .contact-item{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      margin-bottom:20px;
+    }
+
+    .contact-item i{
+      color:#fff;
+    }
+
+/* ADDRESS */
+.address-section {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  margin-top: 40px;
+  flex-wrap: wrap;
+}
+
+.address-box {
+  flex: 1;
+  min-width: 300px;
+  line-height:1.8;
+  color: #e5e5e5;
+
+}
+ .address-box i{
+      margin-right:8px;
+    }
+
+
+/* BOTTOM */
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding: 25px 8%;
+  display: flex;
+  justify-content: space-between;
+  color: #ffffff;
+  align-items:center;
+  flex-wrap:wrap;
+   gap:20px;
+}
+
+.footer-bottom a {
+    color: #FFFFFF !important; /* Forces the color to white */
+    text-decoration: none;      /* Removes the underline */
+    transition: 0.3s;
+}
+
+.footer-bottom a:hover {
+    color: #c9873d !important; /* Subtle brand-gold color on hover so users know it's clickable */
+}
 
 /* =========================================================
    RESPONSIVE SETTINGS (Keep the design looking good on tablets and phones)
