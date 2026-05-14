@@ -66,27 +66,64 @@
 /* =============================================
    SECTION 1: HERO 
    ============================================= */
-/* =============================================
-   SECTION 1: HERO (PRECISION ALIGNMENT)
-   ============================================= */
+
 .cea-hero {
     background-color: white;
     /* Margin logic: 100px padding handles global margin */
-    padding: 60px 100px; 
+    padding: 20px 60px 4% 4%; 
 }
 
 .cea-hero-content {
     display: grid;
     /* Overall 12 column grid */
-    grid-template-columns: 7fr 5fr; 
-    gap: 40px; 
+    grid-template-columns: 6fr 4fr; 
+    gap: 20px; 
     align-items: stretch;
+}
+/* The Gold Block (5 Columns) */
+.cea-hero-right {
+    background-color: var(--cea-orange);
+    border-radius:40px;
+    position: relative; /* Acts as the "anchor" for the button and image */
+   overflow: visible; /* CRUCIAL: Allow the crop frame to stick out to the left */
+   min-height: 550px;
+   display: flex;
+    align-items: flex-end; 
+    /* Keeps buildings on the ground */
+}
+
+/* 1. THE CROP FRAME (The "Window") */
+.cea-hero-img-crop-container {
+    position: absolute;
+    top: 0;
+    bottom: 0px;
+    right: 0;
+    left: -105px; /* This is how much the building overlaps the grey block */
+    
+    overflow: hidden; /* This acts as the scissors to cut the image */
+   border-radius: 40px 40px 40px 40px; /* Keeps the rounded shape of the building block */
+    z-index: 2;
+}
+
+.cea-hero-img {
+    position: absolute;
+    height: 110%; /* Keeps it top-to-bottom */
+    width: auto;   /* Lets the width be natural so it doesn't stretch */
+    
+    /* POSITIONING THE VIEW:
+       Adjust the 'left' to slide the building complex left or right 
+       until only the first two houses are in the 'window'. */
+    left: 55px; 
+    
+    bottom: 0;
+    object-fit: cover;
+    max-width: none;
 }
 
 /* The Grey Block (7 Columns) */
 .cea-hero-left {
    background-color: #ffffff; /* Change from grey to white */
-    border-radius: 105px;
+    border-radius: 40px;
     padding: 80px; 
     /* Add a subtle shadow to give it "lift" */
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
@@ -95,6 +132,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
+    margin: 0; /* Reset any margins to ensure strict alignment */
+    z-index: 1;
 }
 
 /* --- PRECISION LOGO ALIGNMENT LOGIC --- */
@@ -149,8 +188,11 @@
     max-width: 90%;
 }
 
+
 .cea-btn-outline-blue {
-    display: inline-block;
+    display: inline-flex;    /* Changed from inline-block to align icon */
+    align-items: center;     /* Centers text and icon vertically */
+    gap: 10px;               /* Space between text and arrow */
     border: 2px solid var(--cea-blue);
     background-color: transparent;
     color: var(--cea-blue);
@@ -160,51 +202,28 @@
     font-weight: 700;
     transition: 0.3s;
     margin-top: 10px;
+    
 }
 
+.cea-btn-outline-blue .cea-icon-img {
+    width: 30px;
+    height: auto;
+    transition: 0.3s;
+    /* This ensures it starts as the original dark blue color */
+    filter: none; 
+}
+
+/* --- HOVER STATE --- */
 .cea-btn-outline-blue:hover {
     background-color: var(--cea-blue);
     color: white;
+     transform: translateY(-3px);
 }
 
-/* The Gold Block (5 Columns) */
-.cea-hero-right {
-    background-color: var(--cea-orange);
-    border-radius:105px 105px 105px 105px;
-    position: relative; /* Acts as the "anchor" for the button and image */
-   overflow: visible; /* CRUCIAL: Allow the crop frame to stick out to the left */
-   min-height: 550px;
-   display: flex;
-    align-items: flex-end; 
-    /* Keeps buildings on the ground */
-}
-
-/* 1. THE CROP FRAME (The "Window") */
-.cea-hero-img-crop-container {
-    position: absolute;
-    top: 0;
-    bottom: 0.5px;
-    right: 0;
-    left: -85px; /* This is how much the building overlaps the grey block */
-    
-    overflow: hidden; /* This acts as the scissors to cut the image */
-   border-radius: 105px 105px 105px 210px; /* Keeps the rounded shape of the building block */
-    z-index: 1;
-}
-
-.cea-hero-img {
-    position: absolute;
-    height: 110%; /* Keeps it top-to-bottom */
-    width: auto;   /* Lets the width be natural so it doesn't stretch */
-    
-    /* POSITIONING THE VIEW:
-       Adjust the 'left' to slide the building complex left or right 
-       until only the first two houses are in the 'window'. */
-    left: 55px; 
-    
-    bottom: 0;
-    object-fit: cover;
-    max-width: none;
+.cea-btn-outline-blue:hover .cea-icon-img {
+    /* This filter turns a dark image into pure white */
+    filter: brightness(0) invert(1); 
+     transform: translateX(8px); /* The icon slides right when hovering */
 }
 
 
@@ -233,61 +252,6 @@
 }
 
 
-/* =============================================
-   SECTION 2: DISCOUNT BANNER
-   ============================================= */
-.cea-banner-section {
-    padding: 40px 100px; /* Matches your site's side margins */
-    background-color: white;
-}
-
-.cea-banner-container {
-    position: relative;
-    width: 100%;
-    /* Update path to 'Banner 2 5%.png' as needed */
-    background-image: url('./assets/Banner.png'); 
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    border-radius: 20px; /* Optional: rounds the banner edges */
-    height: 140px; /* Adjust height to match the image aspect ratio */
-    display: flex;
-    align-items: center;
-}
-
-.cea-claim-btn {
-    position: absolute;
-    right: 11%; /* Positions it in the empty blue space on the right */
-    background-color: #FFFFFF; /* White background */
-    color: #D18D47; /* Matches the orange/gold text color from your banner */
-    padding: 12px 35px;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: 800;
-    font-size: 18px;
-    text-transform: none;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease;
-}
-
-.cea-claim-btn:hover {
-    transform: scale(1.05);
-    background-color: var(--cea-orange);
-     color:  var(--cea-blue);
-    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.3);
-}
-
-/* Responsive adjustment for smaller screens */
-@media (max-width: 992px) {
-    .cea-banner-section {
-        padding: 20px 40px;
-    }
-    .cea-claim-btn {
-        padding: 8px 20px;
-        font-size: 14px;
-        right: 3%;
-    }
-}
 
 /* =============================================
    SECTION 3: FEATURES & TIMBER FRAME
@@ -322,10 +286,10 @@
 }
 
 .cea-timber-img {
-    width: 100%;
+    width: 112%;
     border-radius: 0px;
     object-fit: cover;
-    margin-top: auto; /* Push to bottom of text area to match design */
+    margin-top: auto;
 }
 
 .cea-features-cards-area {
@@ -337,7 +301,7 @@
 .cea-feature-card {
     background-color: #051046;
     padding: 20px; /* Reduced slightly to fit image better */
-    border-radius: 33px;
+    border-radius: 40px;
     /* THE MAGIC: Aligns image and text side-by-side */
     display: flex;
     align-items: center; 
@@ -348,7 +312,7 @@
     /* Precise square dimensions to match Figma */
     width: 146px;
     height: 158px;
-    border-radius: 31px;
+    border-radius: 40px;
     object-fit: cover; /* Prevents stretching */
     flex-shrink: 0; /* Prevents the image from getting squashed */
 }
@@ -393,7 +357,7 @@ font-weight: 700;
 .cea-careers-section {
     background-color: #051046;
     padding: 80px 10%;
-    border-radius: 33px;
+    border-radius: 40px;
     color: white; /* Make headings white */
 }
 
@@ -481,6 +445,43 @@ font-weight: 700;
     background-color: white;
     color: #051046;
     transform: translateY(-3px);
+}
+
+.cea-career-cta {
+    display: flex;
+    justify-content: flex-start; /* Moves the whole button to the left */
+    margin-top: 30px;
+}
+
+.cea-career-cta .cea-btn-outline-white {
+    display: inline-flex;
+    align-items: center; /* Vertically aligns icon with text */
+    gap: 10px;           /* Perfect spacing between text and your icon */
+    border: 2px solid white;
+    background-color: transparent;
+    color: white;
+    padding: 12px 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.cea-icon-img {
+    width: 30px;       /* Adjust this based on your icon's actual size */
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+/* HOVER EFFECTS */
+.cea-career-cta .cea-btn-outline-white:hover {
+    background-color: white;
+    color: #051046;
+}
+
+.cea-career-cta .cea-btn-outline-white:hover .cea-icon-img {
+    transform: translateX(8px); /* The icon slides right when hovering */
+    filter: brightness(0) saturate(100%) invert(11%) sepia(38%) saturate(5453%) hue-rotate(224deg) brightness(91%) contrast(101%);
 }
 
 /* =============================================
